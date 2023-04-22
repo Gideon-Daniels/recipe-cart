@@ -2,6 +2,6 @@ import {Component} from "@angular/core";
 
 @Component({
   templateUrl: './recipe-detail.component.html',
-  selector: 'recipe-detail',
+  selector: 'recipes-detail',
 })
 export class RecipeDetailComponent{}
