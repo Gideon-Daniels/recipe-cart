@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'recipe',
+  selector: 'recipes',
   templateUrl: 'recipe.component.html',
 })
 export class RecipeComponent{}
