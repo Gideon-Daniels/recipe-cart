@@ -1,1 +1,9 @@
-<h4>I am recipe item</h4>
+<a href="#" class="list-group-item d-flex justify-content-between align-items-center" (click)="onSelected()">
+  <div>
+    <h4 class="">{{ recipe.name }}</h4>
+    <p class=""> {{ recipe.description }}</p>
+  </div>
+  <span>
+      <img [src]="recipe.imagePath" alt="{{ recipe.name }}" class="img-responsive" style="max-height: 50px">
+      </span>
+</a>

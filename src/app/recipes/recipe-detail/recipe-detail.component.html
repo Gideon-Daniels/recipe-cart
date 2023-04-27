@@ -3,11 +3,13 @@
     <img src="" alt="">
   </div>
 </div>
+
 <div class="row">
   <div class="col-xs-12">
-    <h1>Recipe Name</h1>
+    <h1>{{recipe.name}}</h1>
   </div>
 </div>
+
 <div class="row">
   <div class="col-xs-12">
     <div class="btn-group">
@@ -22,14 +24,16 @@
     </div>
   </div>
 </div>
+
 <div class="row">
   <div class="col-xs-12">
-    Description
+    <img [src]="recipe.imagePath" [alt]="recipe.name" style="height: 300px">
   </div>
 </div>
+
 <div class="row">
   <div class="col-xs-12">
-    Ingredient
+    {{ recipe.description}}
   </div>
 </div>
 
