@@ -6,7 +6,9 @@
 <hr>
 <div class="row">
   <div class="col-sx-12 list-group">
-    <recipe-item *ngFor="let recipeItem of recipes" [recipe]="recipeItem"  (recipeSelected)="onRecipeSelected(recipeItem)"></recipe-item>
+    <recipe-item *ngFor="let recipeItem of recipes"
+                              [recipe]="recipeItem"
+    ></recipe-item>
 
   </div>
 </div>
