@@ -6,11 +6,11 @@
 
     <div class="collapse navbar-collapse " >
       <ul class="nav navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="#" (click)="onSelect('recipe')">Recipes</a>
+        <li class="nav-item" routerLinkActive>
+          <a class="nav-link" routerLink="/recipes">Recipes</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" (click)="onSelect('shopping')">Shopping List</a>
+        <li class="nav-item" routerLinkActive>
+          <a class="nav-link" routerLink="/shopping-list">Shopping List</a>
         </li>
       </ul>
 
@@ -20,9 +20,9 @@
             Dropdown link
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item"  style="cursor: pointer">Action</a></li>
+            <li><a class="dropdown-item"  style="cursor: pointer">Another action</a></li>
+            <li><a class="dropdown-item"  style="cursor: pointer">Something else here</a></li>
           </ul>
         </li>
       </ul>
