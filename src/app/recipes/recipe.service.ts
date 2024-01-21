@@ -1,11 +1,10 @@
 import {Recipe} from "./recipe.model";
-import {EventEmitter, Injectable} from "@angular/core";
+import {Injectable} from "@angular/core";
 import {Ingredient} from "../shared/ingredient.model";
 import {ShoppingListService} from "../shopping-list/shopping-list.service";
 
 @Injectable()
 export class RecipeService {
-  recipeSelected = new EventEmitter<Recipe>();
 
  private recipes: Recipe[] = [
     new Recipe('Cheeseburger','A perfect cheeseburger, perfectly proportioned and styled, shot in a fast food advertising style and isolated on white.' +

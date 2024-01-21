@@ -11,8 +11,4 @@ export class AppComponent implements OnInit{
   constructor() {}
 
   ngOnInit(): void {}
-
-  onNavigate(feature: string){
-    this.loadedFeature = feature
-  }
 }
