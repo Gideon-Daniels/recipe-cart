@@ -24,4 +24,7 @@ export class ShoppingListComponent implements OnInit, OnDestroy{
     this.igChangedSub.unsubscribe()
   }
 
+  onEdit(index: number) {
+    this.shoppingListService.startedEditing.next(index)
+  }
 }
