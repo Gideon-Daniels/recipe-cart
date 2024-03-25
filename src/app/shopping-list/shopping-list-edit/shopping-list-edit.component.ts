@@ -32,11 +32,9 @@ export class ShoppingListEditComponent implements OnInit, OnDestroy{
       });
   }
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe()
-  }
 
-  onAddItem(form: NgForm){
+
+  onSubmit(form: NgForm){
     const value = form.value
     const newIngredient = new Ingredient(value.name, value.amount);
     if(this.editMode) {
@@ -44,5 +42,21 @@ export class ShoppingListEditComponent implements OnInit, OnDestroy{
     } else {
       this.shoppingListService.addIngredient(newIngredient)
     }
+    this.editMode = false;
+    form.reset();
+  }
+
+  onClear(){
+    this.shoppingListForm.form.reset()
+    this.editMode = false;
+  }
+
+  onDelete(){
+    this.shoppingListService.deleteIngredient(this.editItemIndex);
+    this.onClear()
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe()
   }
 }
