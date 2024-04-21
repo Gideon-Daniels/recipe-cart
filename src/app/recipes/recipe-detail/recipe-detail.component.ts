@@ -26,9 +26,16 @@ export class RecipeDetailComponent{
 
   onAddShoppingList() {
     this.recipeService.addIngredientsToShoppingList(this.recipe.ingredients)
+    this.router.navigate(['/shopping-list']);
+
   }
 
   onEditRecipe() {
     this.router.navigate(['edit'], { relativeTo: this.route})
+  }
+
+  onDelete() {
+    this.recipeService.deleteRecipe(this.id);
+    this.router.navigate(['/recipes']);
   }
 }
