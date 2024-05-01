@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 
 import {RecipeService} from "../recipes/recipe.service";
 import {Recipe} from "../recipes/recipe.model";
+import {map} from "rxjs";
 
 @Injectable({ providedIn: 'root'})
 export class DataStorageService {
@@ -17,7 +18,11 @@ export class DataStorageService {
   }
 
   fetchRecipes(){
-    this.http.get<Recipe[]>('https://recipe-cart-app-default-rtdb.europe-west1.firebasedatabase.app/recipes.json').subscribe(recipes => {
+    this.http.get<Recipe[]>('https://recipe-cart-app-default-rtdb.europe-west1.firebasedatabase.app/recipes.json').pipe(map(recipes => {
+      return recipes.map((recipe => {
+        return {...recipe, ingredients: recipe.ingredients ? recipe.ingredients: []}
+      }));
+    })).subscribe(recipes => {
       this.recipesService.setRecipes(recipes);
     });
   }
