@@ -20,6 +20,7 @@ import { TableComponent } from './table/table.component';
 import {RecipeService} from "./recipes/recipe.service";
 import {HttpClientModule} from "@angular/common/http";
 import {AuthComponent} from "./auth/auth.component";
+import {LoadingSpinnerComponent} from "./loading-spinner/loading-spinner.component";
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {AuthComponent} from "./auth/auth.component";
     RecipesStartComponent,
     RecipeEditComponent,
     TableComponent,
-    AuthComponent
+    AuthComponent,
+    LoadingSpinnerComponent
   ],
     imports: [
         BrowserModule,
