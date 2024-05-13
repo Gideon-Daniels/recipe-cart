@@ -58,6 +58,8 @@ export class AuthService {
       case 'INVALID_PASSWORD':
         errorMessage = 'This password is not correct';
         break;
+      default:
+        errorMessage = 'unknown error occurred';
     }
 
     return throwError(errorMessage);
