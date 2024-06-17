@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { RecipeService } from '../recipes/recipe.service';
 import { Recipe } from '../recipes/recipe.model';
-import { exhaustMap, map, take, tap } from 'rxjs';
+import { map, tap } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 
 @Injectable({ providedIn: 'root' })
@@ -27,25 +27,22 @@ export class DataStorageService {
   }
 
   fetchRecipes() {
-    return this.authService.user.pipe(
-      take(1),
-      exhaustMap((user) => {
-        return this.http.get<Recipe[]>(
-          'https://recipe-cart-app-default-rtdb.europe-west1.firebasedatabase.app/recipes.json',
-          { params: new HttpParams().set('auth', user.token) },
-        );
-      }),
-      map((recipes) => {
-        return recipes.map((recipe) => {
-          return {
-            ...recipe,
-            ingredients: recipe.ingredients ? recipe.ingredients : [],
-          };
-        });
-      }),
-      tap<Recipe[]>((recipes) => {
-        this.recipesService.setRecipes(recipes);
-      }),
-    );
+    return this.http
+      .get<
+        Recipe[]
+      >('https://recipe-cart-app-default-rtdb.europe-west1.firebasedatabase.app/recipes.json')
+      .pipe(
+        map((recipes) => {
+          return recipes.map((recipe) => {
+            return {
+              ...recipe,
+              ingredients: recipe.ingredients ? recipe.ingredients : [],
+            };
+          });
+        }),
+        tap<Recipe[]>((recipes) => {
+          this.recipesService.setRecipes(recipes);
+        }),
+      );
   }
 }
