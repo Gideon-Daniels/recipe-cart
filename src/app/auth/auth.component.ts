@@ -78,22 +78,22 @@ export class AuthComponent implements OnDestroy {
       this.closeSub.unsubscribe();
     }
   }
-
+  // used for programmatic approach to dynamically create components
   #showErrorAlert(message: string) {
-    const alertComponentFactory =
-      this.componentFactoryResolver.resolveComponentFactory(AlertComponent);
-
-    const hostViewContainerRef = this.alertHost.viewContainerRef;
-    hostViewContainerRef.clear();
-
-    const componentRef = hostViewContainerRef.createComponent(
-      alertComponentFactory,
-    );
-
-    componentRef.instance.message = message;
-    this.closeSub = componentRef.instance.close.subscribe(() => {
-      this.closeSub.unsubscribe();
-      hostViewContainerRef.clear();
-    });
+    //   const alertComponentFactory =
+    //     this.componentFactoryResolver.resolveComponentFactory(AlertComponent);
+    //
+    //   const hostViewContainerRef = this.alertHost.viewContainerRef;
+    //   hostViewContainerRef.clear();
+    //
+    //   const componentRef = hostViewContainerRef.createComponent(
+    //     alertComponentFactory,
+    //   );
+    //
+    //   componentRef.instance.message = message;
+    //   this.closeSub = componentRef.instance.close.subscribe(() => {
+    //     this.closeSub.unsubscribe();
+    //     hostViewContainerRef.clear();
+    //   });
   }
 }
