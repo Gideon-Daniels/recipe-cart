@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,25 +13,19 @@ import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
 
-@NgModule({
-  declarations: [AppComponent, HeaderComponent, TableComponent],
-  imports: [
-    AppRoutingModule,
-    HttpClientModule,
-    RecipesModule,
-    ShoppingListModule,
-    SharedModule,
-    AuthModule,
-  ],
-  providers: [
-    ShoppingListService,
-    RecipeService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptorService,
-      multi: true,
-    },
-  ],
-  bootstrap: [AppComponent],
-})
+@NgModule({ declarations: [AppComponent, HeaderComponent, TableComponent],
+    bootstrap: [AppComponent], imports: [AppRoutingModule,
+        RecipesModule,
+        ShoppingListModule,
+        SharedModule,
+        AuthModule], providers: [
+        ShoppingListService,
+        RecipeService,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptorService,
+            multi: true,
+        },
+        provideHttpClient(withInterceptorsFromDi()),
+    ] })
 export class AppModule {}
