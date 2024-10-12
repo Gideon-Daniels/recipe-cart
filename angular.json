@@ -63,10 +63,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "recipe-cart:build:production"
+              "buildTarget": "recipe-cart:build:production"
             },
             "development": {
-              "browserTarget": "recipe-cart:build:development"
+              "buildTarget": "recipe-cart:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -74,7 +74,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "recipe-cart:build"
+            "buildTarget": "recipe-cart:build"
           }
         },
         "test": {
