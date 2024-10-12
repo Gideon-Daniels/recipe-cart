@@ -6,8 +6,9 @@ import {RouterTestingModule} from "@angular/router/testing";
 import {CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
 import {BrowserDynamicTestingModule} from "@angular/platform-browser-dynamic/testing";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {HttpClientTestingModule} from "@angular/common/http/testing";
+import { provideHttpClientTesting } from "@angular/common/http/testing";
 import {RecipeService} from "../recipe.service";
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 fdescribe('RecipeEditComponent', () => {
   let component: RecipeEditComponent;
@@ -20,20 +21,19 @@ fdescribe('RecipeEditComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RecipeEditComponent ],
-      imports: [
-        ReactiveFormsModule,
+    declarations: [RecipeEditComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    imports: [ReactiveFormsModule,
         RouterTestingModule.withRoutes([]),
         FormsModule,
         BrowserDynamicTestingModule,
-        BrowserAnimationsModule,
-        HttpClientTestingModule,
-      ],
-      providers: [
+        BrowserAnimationsModule],
+    providers: [
         { provide: RecipeService, useClass: FakeRecipeService },
-      ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    })
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting(),
+    ]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(RecipeEditComponent);
